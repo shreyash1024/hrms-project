@@ -22,9 +22,8 @@ router.patch('/setManager', authMiddleware.restrictTo('admin', 'HR'), reqValidat
 router.patch('/updateEmpGrade', authMiddleware.restrictTo('admin', 'HR'), reqValidation.updateEmpGrade, addValidation.updateEmpGrade, userController.updateEmpGrade);
 router.patch('/delete/:id', authMiddleware.restrictTo('admin'), reqValidation.deleteUser, userController.deleteUser)
 router.delete('/logout', userController.logOut);
-router.route('/:id')
-    .patch(authMiddleware.restrictTo('admin'), reqValidation.updateUser, addValidation.updateUser, userController.updateUser)
+router.patch(authMiddleware.restrictTo('admin'), reqValidation.updateUser, addValidation.updateUser, userController.updateUser)
 
-router.use(errors());
+router.use(errors());               
 
 module.exports = router;

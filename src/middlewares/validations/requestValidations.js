@@ -30,7 +30,7 @@ const validationSchema = {
 
     forgotPassword: celebrate({
         [Segments.BODY]: Joi.object({
-            email: Joi.string().required().lowercase().trim().email()
+            email: Joi.string().required().lowercase().trim().email().required()
         })
     }, { abortEarly: false }),
 
@@ -60,7 +60,7 @@ const validationSchema = {
             id: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
         })
     }, { abortEarly: false }),
-
+    
     updateEmpGrade: celebrate({
         [Segments.BODY]: Joi.object({
             email: Joi.string().lowercase().trim().email().required(),
